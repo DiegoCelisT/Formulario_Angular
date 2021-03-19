@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'formulario';
+  title = 'formulario'; //Pode apagar
+
+  funcao_onSubmit (formulariezinho){
+    console.log(formulariezinho.form.value);
+  }
 }

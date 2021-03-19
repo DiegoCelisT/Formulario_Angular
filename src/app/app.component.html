@@ -1,12 +1,12 @@
 <div class="login-box">
   <h2>Login</h2>
-	<form>
+	<form #meuForm="ngForm" (ngSubmit)="funcao_onSubmit(meuForm)">
 		<div class="user-box">
-			<input type="text" name="" required="">
+			<input type="text" name="email" required ngModel> <!--Se não colocar ngModel, o Angular não monitora e não sabe que deve enviar essa info-->
 			<label>Email</label>
 		</div>
 		<div class="user-box">
-			<input type="password" name="" required="">
+			<input type="password" name="senha" required ngModel> 
 			<label>Senha</label>
 		</div>
 		
