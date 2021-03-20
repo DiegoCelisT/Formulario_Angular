@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from './usuario.service'; //new
+
 
 @Component({
   selector: 'app-root',
@@ -7,13 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  //Para ter formulario preenchido:
-  usuario_preenchido: any = {
-    email: 'unpocoloco@guitarra.co',
-    senha: 'luffy'
+  //Para ter o formulario preenchido:
+  usuario_preenchido: any = {}
+
+  //new:
+  constructor (private usuaService: UsuarioService) {
+    usuaService.getUsuario().subscribe(usuario_preenchido => this.usuario_preenchido = usuario_preenchido)
   }
-  
-  title = 'formulario'; //Pode apagar
+
 
   funcao_onSubmit (formulariezinho){
     console.log(formulariezinho.form.value);

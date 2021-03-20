@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; //new
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'; //new
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule //new
+    FormsModule,
+    HttpClientModule //new
   ],
   providers: [],
   bootstrap: [AppComponent]
