@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuarioService } from './usuario.service'; //new
-
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +8,26 @@ import { UsuarioService } from './usuario.service'; //new
 })
 export class AppComponent {
   
-  //Para ter o formulario preenchido:
   usuario_preenchido: any = {}
 
-  //new:
   constructor (private usuaService: UsuarioService) {
     // usuaService.getUsuario().subscribe(usuario_preenchido => this.usuario_preenchido = usuario_preenchido) 
     //COMENTADO PARA DEIXAR O FORMULARIO VAZIO PARA A GENTE PREENCHER
   }
 
 
+  //AGORA O SUBMIT VAI SIMULAR QUE ENVIA OS DADOS PARA A API:
   funcao_onSubmit (formulariezinho){
     if (formulariezinho.form.status == 'INVALID')
     {
-      alert ('O formulario deve ser preenchido corretamente! Dados incorretos!')
+      alert ('O formulario deve ser preenchido corretamente! Dados incorretos!');
     }
-    else
-    {
-      alert ('dados enviados com sucesso!')
-    console.log(formulariezinho.form.value);
-    }
-    
+    else{//new
+      this.usuaService.postUsuario (formulariezinho.form.value)
+      .subscribe (resposta => {
+        console.log (resposta);
+        alert ('Dados enviados com sucesso!')
+      })
+    }  
   }
 }
